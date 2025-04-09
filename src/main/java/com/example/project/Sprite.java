@@ -47,7 +47,7 @@ public class Sprite {
         // Default behavior (can be overridden by subclasses)
     }
 
-    // overridden method to get emoji that represents sprite on grid
+    // to be overridden method to get emoji that represents sprite on grid
     public String emoji() {
         return "";
     }

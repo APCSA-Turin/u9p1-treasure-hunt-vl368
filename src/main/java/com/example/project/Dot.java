@@ -7,6 +7,7 @@ public class Dot extends Sprite{
         super(x,y);
     }
 
+    @Override
     // overridden method to get emoji that represents dot on grid
     public String emoji() {
         return "⬜";

@@ -30,6 +30,11 @@ public class Player extends Sprite {
         return "Player:" + super.getRowCol(size);
     }
 
+    // decrements lives counter
+    public void loseLife() {
+        numLives--;
+    }
+
     @ Override
     // moves the (x,y) coordinates of the player
     public void move(String direction) { 
@@ -53,19 +58,20 @@ public class Player extends Sprite {
     // interact with an object in the position you are moving to 
     // numTreasures is the total treasures at the beginning of the game
     public void interact(int size, String direction, int numTreasures, Object obj) { 
+        // checks for what class the object in new position is
         if (obj instanceof Trophy) {
+            // if a trophy and player collected all treasures, they win
             if (numTreasures == treasureCount) {
                 win = true;
             }
         }
         else if (obj instanceof Treasure) {
+            // if a treasure, the player collects the treasure
             treasureCount++;
         }
         else if (obj instanceof Enemy) {
+            // if an enemy, they lose a life
             numLives--;
-            if (numLives <= 0) {
-                win = false;
-            }
         }
     }
 

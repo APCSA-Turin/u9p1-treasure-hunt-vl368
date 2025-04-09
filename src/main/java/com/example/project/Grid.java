@@ -10,7 +10,9 @@ public class Grid {
     // initializes and creates a grid with all DOT objects
     public Grid(int size) { 
         this.size = size;
+        // initalizes grid
         grid = new Sprite[size][size];
+        // places a dot in every grid space
         for (int row = 0; row < size; row++) {
             for (int col = 0; col < size; col++) {
                 grid[row][col] = new Dot(size - 1 - row, col);
@@ -69,10 +71,13 @@ public class Grid {
     public void gameover() { //use this method to display a loss
         for (int i = 0; i < size; i++) {
             for (int j = 0; j < grid[0].length; j++) {
+                // all grid spaces except the one with player 
+                // will print a skull
                 if (!(grid[i][j] instanceof Player)) {
                     System.out.print("💀");
                 }
                 else {
+                    // player's space will print unicorn
                     System.out.print("🦄");
                 }
             }
@@ -83,11 +88,14 @@ public class Grid {
     public void win(){ //use this method to display a win 
         for (int i = 0; i < size; i++) {
             for (int j = 0; j < grid[0].length; j++) {
+                // every grid space except the player's
+                // will be replaced with a treasure object
                 if (!(grid[i][j] instanceof Player)) {
                     grid[i][j] = new Treasure(size - 1 - i, j);
                 }
             }
         }
+        // displays changed grid which will be filled with treasure
         display();
     }
 
